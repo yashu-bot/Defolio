@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defolio - Yashwanth's Portfolio</title>
+    <style>
+        /* General Styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            font-size: 1rem;
+        }
+        
+        #profile-pic {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        #profile-pic:hover {
+            transform: scale(1.1);
+        }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal img,
+        .modal embed {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+        
+        .modal .close-btn:hover {
+            color: red;
+        }
+        
+        nav {
+            background: #333;
+            display: flex;
+            justify-content: center;
+            padding: 0.5rem 0;
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        section>div {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        /* Flexbox layout for details and certificates */
+        
+        .container {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+        
+        .details {
+            flex: 2;
+        }
+        
+        .certificate {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .certificate img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .certificate img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Defolio</h1>
+        <p>Welcome to the portfolio of Yashwanth G S</p>
+        <img src="assets/WhatsApp Image 2024-12-05 at 11.16.34 PM.jpeg" alt="Profile Picture" id="profile-pic" onclick="showModal('profile-modal')">
+    </header>
+
+    <!-- Modal for Profile Picture -->
+    <div id="profile-modal" class="modal">
+        <button class="close-btn" onclick="closeModal('profile-modal')">&times;</button>
+        <img src="assets/WhatsApp Image 2024-12-05 at 11.16.34 PM.jpeg" alt="Profile Picture">
+    </div>
+
+    <!-- Modals for Certificates -->
+    <div id="hackathon-modal" class="modal">
+        <button class="close-btn" onclick="closeModal('hackathon-modal')">&times;</button>
+        <embed src="assets/Screenshot 2024-12-08 155549.png" type="application/pdf" width="100%" height="90%">
+    </div>
+
+    <div id="course-modal" class="modal">
+        <button class="close-btn" onclick="closeModal('course-modal')">&times;</button>
+        <embed src="assets/Screenshot 2024-12-08 155608.png" type="application/pdf" width="100%" height="90%">
+    </div>
+    <!-- About Section -->
+    <section id="about">
+        <div>
+            <h2>About Me</h2>
+            <p>Hello! I'm Yashwanth G S, a 2nd-year CSE student at REVA University. I specialize in software engineer and am passionate about solving real-world problems through technology.</p>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div>
+            <h2>Education</h2>
+            <p><strong>University:</strong> REVA University</p>
+            <p><strong>Program:</strong> B.Tech in Computer Science and Engineering</p>
+            <p><strong>Year:</strong> 2nd Year (2024 - Present)</p>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div>
+            <h2>Projects</h2>
+            <p><strong>Dynamic Team Management Tool:</strong> A web application to manage tasks and collaborate in real-time.</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div>
+            <h2>Courses</h2>
+            <div class="container">
+                <div class="details">
+                    <h3>Introduction to Java</h3>
+                    <p><strong>Course:</strong> JAVA Basics</p>
+                    <p><strong>Mode:</strong> Online</p>
+                </div>
+                <div class="certificate" onclick="showModal('course-modal')">
+                    <img src="assets/Screenshot 2024-12-08 155608.png" alt="Java Course Certificate">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hackathons Section -->
+    <section id="hackathons">
+        <div>
+            <h2>Hackathons</h2>
+            <div class="container">
+                <div class="details">
+                    <h3>CICADA</h3>
+                    <p><strong>Event:</strong> CICADA 2024</p>
+                    <p><strong>Position:</strong> TOP 10</p>
+                    <p><strong>Project:</strong> Website Design</p>
+                </div>
+                <div class="certificate" onclick="showModal('hackathon-modal')">
+                    <img src="assets/Screenshot 2024-12-08 155549.png" alt="Hackathon Certificate">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div>
+            <h2>Contact Me</h2>
+            <p>Email: yashwanth783@gmail.com</p>
+            <p>Phone: +91 7349028422</p>
+            <p><a href="https://www.linkedin.com/in/yashwanth-g-s-78313a339/" target="_blank">LinkedIn</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Yashwanth G S. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach((modal) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>
